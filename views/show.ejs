@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post in Detail</title>
+    <style>
+        body {
+            background-color: rebeccapurple;
+            text-align: center;
+            padding: 20px;
+        }
+        .post {
+            background-color: lightblue;
+            border-radius: 8px;
+            padding: 20px;
+            display: inline-block;
+            text-align: left;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .user {
+            font-style: italic;
+            color: #333;
+        }
+        .content {
+            color: #555;
+        }
+    </style>
+
+</head>
+<body>
+    <h1 style="background-color: hotpink;">Here is your post in detail</h1>
+    <p style="background-color: lightblue;">Post Id : <%=post.id%></p>
+    <div class="post">
+        <h3 class="user">@<%=post.username%></h3>
+        <h4 class="content"><%=post.content%></h4>
+    </div>
+</body>
+</html>

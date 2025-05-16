@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VibeNote</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Welcome to VibeNote</h1>
+    <% for(post of posts) { %>
+        <div class="post">
+            <h3 class="user">@<%=post.username%></h3>
+            <h4 class="content"><%=post.content%></h4>
+            <br>
+            <a href="http://localhost:3000/post/<%=post.id%>" class="view-post">View Post</a>
+            <a href="http://localhost:3000/post/<%=post.id%>/edit" class="edit-post">Edit Post</a>
+            <form class="delForm" method="post" action="/post/<%=post.id%>?_method=DELETE">
+                <button type="submit">DELETE POST</button>
+            </form>
+        </div>
+    <% } %>
+    <br>
+    <a href="http://localhost:3000/post/new" class="new-post">Create New Post</a>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    const deleteForms = document.querySelectorAll(".delForm");
+
+    deleteForms.forEach(form => {
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      Swal.fire({
+        title: "Are you sure?",
+        text: "This action cannot be undone.",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Yes, delete it!",
+        cancelButtonText: "Cancel"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          form.submit();
+        }
+      });
+    });
+  });
+  </script>
+</html>

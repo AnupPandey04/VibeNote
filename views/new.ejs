@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Post</title>
+</head>
+<body>
+    <form id="postForm" method="POST" action="/posts">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" placeholder="enter username" required><br><br>
+        
+        <label for="content">Content:</label>
+        <textarea id="content" name="content" placeholder="enter content" required></textarea><br>
+        
+        <button type="submit">Create Post</button>
+    </form>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    const form = document.getElementById("postForm");
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault(); 
+
+      Swal.fire({
+        title: "Success!",
+        text: "New Post Created!",
+        icon: "success",
+        confirmButtonText: "OK"
+      }).then(() => {
+        form.submit(); 
+      });
+    });
+  </script>
+</html>
